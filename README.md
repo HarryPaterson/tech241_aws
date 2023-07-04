@@ -4,6 +4,9 @@
 * AWS Intro
 * EC2
 * App and Database Deployment
+* Use User Data
+* Create Image
+* Set-up Monitoring
 * Differences AWS/Azure
 
 ### AWS Intro
@@ -40,6 +43,27 @@ Once SSH'd into our VMs, again we will create our scripts, put in their contents
 In the case to automatically deploy database rather than use the script, when creating the VM we can navigate to Advanced settings, use user data at the bottom and put the contents of our script. This will cause it to run as the root user on deployment.
 
 ![](https://i.imgur.com/HBFsusY.png)
+
+### Create Image
+An Amazon Machine Image (AMI) is a template that contains a software configuration (for example, an operating system, an application server, and applications). From an AMI, you launch an instance, which is a copy of the AMI running as a virtual server in the cloud.
+
+AMIs cost less to run then a virtual machine.
+![](https://i.imgur.com/rhLnNVY.png)
+
+### Set-up monitoring
+
+1. Log in to the AWS Management Console.
+2. Navigate to the CloudWatch service.
+3. In the left-hand menu, click on "Alarms" and then click on "Create alarm."
+4. On the "Create Alarm" page, select the EC2 instance you want to monitor from the drop-down list.
+5. Under "Create Metric Filter and Alarm," click on "Select metric."
+6. In the "Browse" tab, select "Per-Instance Metrics" and then choose the desired instance from the list.
+7. Scroll down and expand the "CPUUtilization" metric.
+8. Set the conditions for the alarm. For example, you can set the threshold to be triggered when the CPU utilization exceeds a certain percentage for a specific period of time.
+9. Configure the actions for the alarm. Click on "Create new topic" to create a new SNS (Simple Notification Service) topic, which will send email notifications.
+10. Enter the necessary details for the SNS topic, including the email addresses to which you want to send the notifications.
+11. Configure the remaining alarm settings as per your requirements.
+12. Click on "Create alarm" to save the alarm configuration.
 
 ### Differences AWS/Azure
 * Azure uses resource groups, AWS not necessary.
