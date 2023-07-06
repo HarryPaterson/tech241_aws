@@ -132,8 +132,6 @@ print("Successfully Downloaded File")
 ```
 #### Delete bucket
 ```
-[Yesterday 13:52] Luke Fairbrass
-
 aws s3 rm s3://tech241-luke-bucket/testfile.txt
 ```
 
