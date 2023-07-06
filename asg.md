@@ -15,4 +15,4 @@ For our ASG we will require a launch template which will instruct the ASG on wha
 Our autoscaling group will then work on our set configuration mentioned earlier.
 Autoscaling groups often work in conjunction with load balancers. The load balancer distributes incoming traffic across multiple instances within the group, ensuring that the workload is evenly distributed and improving the overall availability and responsiveness of the application.
 
-Note: Pictures needed on next set up
+Note: Pictures and steps needed on next update
