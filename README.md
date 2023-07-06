@@ -7,6 +7,7 @@
 * Use User Data
 * Create Image
 * Set-up Monitoring
+* S3
 * Differences AWS/Azure
 
 ### AWS Intro
@@ -64,6 +65,78 @@ AMIs cost less to run then a virtual machine.
 10. Enter the necessary details for the SNS topic, including the email addresses to which you want to send the notifications.
 11. Configure the remaining alarm settings as per your requirements.
 12. Click on "Create alarm" to save the alarm configuration.
+
+### S3 
+
+Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services that provides object storage through a web service interface. We will use CLI instead to help with IaC . In S3 files are stored in buckets which are similar to Azures blobs.
+#### Configure AWS
+```
+aws config
+
+access key:
+
+secret key:
+
+region name: eu-west-1
+
+default output format: json
+```
+#### Install packages
+```
+pip install awscli #Access AWS
+pip install boto3 #Establish connection to S3
+```
+#### Create bucket
+```
+# Import boto3
+import boto3
+
+# Set up S3 connection
+s3 = boto3.client("s3")
+
+# Create a bucket in the eu-west-1 region
+bucket_name = s3.create_bucket(Bucket= "tech241-henry-python-bucket", CreateBucketConfiguration={"LocationConstraint":"eu-west-1"})
+
+# Print bucket name to confirm working script
+print(bucket_name)
+```
+#### Upload to bucket
+```
+# Import boto3
+import boto3
+
+# Set up S3 connection
+s3 = boto3.client("s3")
+
+# Upload file to S3
+upload_file = s3.upload_file("testfile.txt", "tech241-henry-python-bucket" , "testfile.txt")
+
+# Print successfully uploaded to confirm working script
+print("Successfully Uploaded File")
+```
+#### Download from bucket
+```
+# s3.download_file(bucket_name, object_name, file_path)
+# Download File
+# Import boto3
+import boto3
+
+# Set up S3 connection
+s3 = boto3.client("s3")
+
+# Download file from S3
+s3.download_file("tech241-henry-python-bucket", "testfile.txt", "testdownload.txt")
+
+# Print successfully uploaded to confirm working script
+print("Successfully Downloaded File")
+```
+#### Delete bucket
+```
+[Yesterday 13:52] Luke Fairbrass
+
+aws s3 rm s3://tech241-luke-bucket/testfile.txt
+```
+
 
 ### Differences AWS/Azure
 * Azure uses resource groups, AWS not necessary.
